@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xem lịch uống thuốc</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+    <!-- Banner -->
+    <div class="banner">
+        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef" alt="">
+
+        <div class="overlay">
+            <h1>📋 Lịch uống thuốc</h1>
+            <p>Theo dõi sức khỏe mỗi ngày</p>
+
+            <!-- Nút admin -->
+            <a href="login.html">
+                <button>🔐 Admin</button>
+            </a>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- Filter -->
+        <section>
+            <h2>🔍 Tìm kiếm bệnh nhân</h2>
+
+            <input
+                id="search"
+                type="text"
+                placeholder="Nhập tên bệnh nhân..."
+            >
+        </section>
+
+        <!-- Danh sách -->
+        <section>
+            <h2>📅 Danh sách lịch</h2>
+
+            <div id="scheduleList"></div>
+        </section>
+
+    </div>
+
+    <script src="./js/main.js"></script>
+
+</body>
+</html>
