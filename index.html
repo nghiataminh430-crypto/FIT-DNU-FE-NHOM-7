@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedReminder</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="logo">
+                <i class="fa-solid fa-heart-pulse"></i>
+                <h2>MedReminder</h2>
+            </div>
+
+            <ul class="menu">
+
+                <li class="menu-item active" data-tab="home">
+                    <i class="fa-solid fa-house"></i>
+                    Trang chủ
+                </li>
+
+                <li class="menu-item" data-tab="history">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    Lịch sử uống
+                </li>
+
+                <li class="menu-item" data-tab="reminder">
+                    <i class="fa-solid fa-bell"></i>
+                    Nhắc thuốc
+                </li>
+
+            </ul>
+
+            <button class="logout-btn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Đăng xuất
+            </button>
+
+        </aside>
+
+        <!-- MAIN -->
+        <main class="main-content">
+
+            <!-- HEADER -->
+            <div class="topbar">
+
+                <div>
+                    <h1>Xin chào 👋</h1>
+                    <p>Theo dõi lịch uống thuốc hôm nay</p>
+                </div>
+
+                <div class="profile-box">
+                    <i class="fa-solid fa-user"></i>
+                    <span>User</span>
+                </div>
+
+            </div>
+
+            <!-- STATS -->
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <div>
+                        <h3 id="totalSchedules">0</h3>
+                        <p>Tổng lịch uống</p>
+                    </div>
+                    <i class="fa-solid fa-capsules"></i>
+                </div>
+
+                <div class="stat-card">
+                    <div>
+                        <h3><span id="todayStatus">Hôm nay</span></h3>
+                        <p>Trạng thái điều trị</p>
+                    </div>
+                    <i class="fa-solid fa-heart-circle-check"></i>
+                </div>
+
+            </div>
+
+            <!-- TAB HOME -->
+            <div class="table-box tab-content active-tab" id="home">
+
+                <h2>
+                    <i class="fa-solid fa-pills"></i>
+                    Lịch uống thuốc hôm nay
+                </h2>
+
+                <div id="scheduleList"></div>
+
+            </div>
+
+            <!-- TAB HISTORY -->
+            <div class="table-box tab-content" id="history">
+
+                <h2>
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    Lịch sử đã uống
+                </h2>
+
+                <div id="historyList"></div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <!-- API -->
+    <script src="js/api.js"></script>
+    <script src="js/main.js"></script>
+
+    <!-- TAB SWITCH (JQUERY) -->
+    <script>
+        $(document).ready(function () {
+
+            $(".menu-item").click(function () {
+
+                let tab = $(this).data("tab");
+
+                $(".menu-item").removeClass("active");
+                $(this).addClass("active");
+
+                $(".tab-content").removeClass("active-tab");
+                $("#" + tab).addClass("active-tab");
+
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>

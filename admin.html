@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedReminder Admin</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div>
+
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                    </div>
+                    <h2>MedAdmin</h2>
+                </div>
+
+                <ul class="menu">
+
+                    <li class="menu-item active" data-tab="dashboard">
+                        <i class="fa-solid fa-chart-line"></i>
+                        Dashboard
+                    </li>
+
+                    <li class="menu-item" data-tab="medicine">
+                        <i class="fa-solid fa-pills"></i>
+                        Quản lý thuốc
+                    </li>
+
+                    <li class="menu-item" data-tab="reminder">
+                        <i class="fa-solid fa-clock"></i>
+                        Giờ nhắc
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <button class="logout-btn">
+                Đăng xuất
+            </button>
+
+        </aside>
+
+        <!-- CONTENT -->
+        <main class="content">
+
+            <!-- TOP -->
+            <div class="topbar">
+
+                <div class="welcome">
+                    <h1>Admin Dashboard 🩺</h1>
+                    <p>Quản lý thuốc và lịch uống thuốc.</p>
+                </div>
+
+                <div class="profile">
+                    <img src="https://i.pravatar.cc/150?img=15">
+                    <div>
+                        <h4>Admin</h4>
+                        <p>MedReminder</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- HERO -->
+            <section class="hero">
+                <h2>Quản lý điều trị thông minh</h2>
+                <p>Tạo lịch uống thuốc, quản lý bệnh nhân và nhắc giờ.</p>
+            </section>
+
+            <!-- ================= DASHBOARD ================= -->
+            <div class="tab-content active-tab" id="dashboard">
+
+                <div class="dashboard-grid">
+
+                    <!-- FORM -->
+                    <div class="form-box">
+
+                        <h2>Tạo lịch uống thuốc</h2>
+
+                        <div class="input-group">
+                            <label>Tên bệnh nhân</label>
+                            <input type="text" id="patientName" placeholder="Nhập tên bệnh nhân">
+                        </div>
+
+                        <div class="input-group">
+                            <label>Tên thuốc</label>
+                            <input type="text" id="medName" placeholder="Nhập tên thuốc">
+                        </div>
+
+                        <div class="input-group">
+                            <label>Giờ uống thuốc</label>
+                            <input type="time" id="time">
+                        </div>
+
+                        <button class="submit-btn" onclick="createFullSchedule()">
+                            <i class="fa-solid fa-plus"></i>
+                            Tạo lịch uống thuốc
+                        </button>
+
+                    </div>
+
+                    <!-- LIST -->
+                    <div class="table-box">
+
+                        <h2>Danh sách lịch uống</h2>
+                        <div id="scheduleList"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- ================= MEDICINE ================= -->
+            <div class="tab-content" id="medicine">
+
+                <div class="table-box">
+                    <h2>Quản lý thuốc</h2>
+                    <div id="medicineList">
+                        <!-- render JS -->
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ================= REMINDER ================= -->
+            <div class="tab-content" id="reminder">
+
+                <div class="table-box">
+                    <h2>Giờ nhắc thuốc</h2>
+                    <div id="reminderList">
+                        <!-- render JS -->
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <!-- JS -->
+    <script src="js/api.js"></script>
+    <script src="js/admin.js"></script>
+
+    <!-- TAB SWITCH -->
+    <script>
+        $(document).ready(function () {
+
+            $(".menu-item").click(function () {
+
+                let tab = $(this).data("tab");
+
+                $(".menu-item").removeClass("active");
+                $(this).addClass("active");
+
+                $(".tab-content").removeClass("active-tab");
+                $("#" + tab).addClass("active-tab");
+
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>
